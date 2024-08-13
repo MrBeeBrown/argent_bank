@@ -1,0 +1,345 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url(../fonts/Montserrat-Regular.ttf) format('ttf');
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  color: #2C3E50;
+}
+
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 1.8rem 1.5rem;
+
+  img {
+    width: 200px;
+    cursor: pointer;
+  }
+
+  .sign__in {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+
+    img {
+      width: 25px;
+    }
+
+    a {
+      color: #2C3E50;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+
+  .cover {
+    width: 100%;
+    height: 400px;
+    background-image: url(../assets//bank-tree.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+    .cover__content {
+      position: absolute;
+      width: 350px;
+      background-color: #ffffff;
+      font-size: 1.5rem;
+      right: 4%;
+      bottom: 100px;
+      padding: 2rem;
+
+      .bold__text__cover {
+        font-weight: 600;
+      }
+
+      .normal__text__cover {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    margin: 0 auto;
+    padding-top: 3rem;
+    margin-bottom: 3rem;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 550px;
+
+      .content__img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: #00BC77 10px solid;
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 100px;
+        }
+      }
+
+
+      h2 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      p {
+        text-align: center;
+      }
+    }
+  }
+
+  .login {
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - 170px);
+    background-color: #12002B;
+  }
+
+  .login__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 370px;
+    background-color: #ffffff;
+    padding: 2rem;
+    margin-top: 3rem;
+    gap: 1rem;
+
+    img {
+      width: 20px;
+    }
+
+    p {
+      font-weight: 600;
+      font-size: 1.3rem
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      input {
+        margin-bottom: 1rem;
+        width: 230px;
+        height: 35px;
+      }
+
+      .login__button {
+        background-color: #00BC77;
+        color: #ffffff;
+        font-weight: 600;
+        border: none;
+        padding: .5rem;
+        margin-top: 1rem;
+        cursor: pointer;
+      }
+
+      .login__label {
+        font-weight: 600;
+      }
+
+      .password__label {
+        font-weight: 600;
+      }
+
+      .login__remember {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: .9rem;
+
+        input {
+          margin: 0;
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  padding: 3rem;
+  border-top: #CCCCCC 1px solid;
+}
+
+.error {
+  h1 {
+    font-size: 6rem;
+    font-weight: 600;
+    color: #00BC77;
+    margin: 3rem 0;
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (max-width: 920px) {
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    padding: 1.8rem 1.5rem;
+
+    img {
+      width: 150px;
+    }
+
+    .sign__in {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+
+      img {
+        width: 25px;
+      }
+    }
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+
+    .cover {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 300px;
+      background-image: url(../assets//bank-tree.jpeg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+
+      .cover__content {
+        width: 250px;
+        background-color: #ffffff;
+        font-size: 1rem;
+        padding: 1rem;
+        right: auto;
+        bottom: auto;
+
+        .bold__text__cover {
+          font-weight: 600;
+        }
+
+        .normal__text__cover {
+          font-size: .9rem;
+          margin-top: 1rem;
+        }
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin: 0 auto;
+      padding-top: 3rem;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 550px;
+        padding: 1rem;
+
+        .content__img {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          border: #00BC77 10px solid;
+          margin-bottom: 2rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            width: 100px;
+          }
+        }
+
+
+        h2 {
+          font-size: 1.3rem;
+          font-weight: 600;
+          margin-bottom: 1rem;
+          text-align: center;
+        }
+
+        p {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .9rem;
+    height: 40px;
+    padding: 1rem;
+    margin-top: 3rem;
+    border-top: #CCCCCC 1px solid;
+  }
+
+}
