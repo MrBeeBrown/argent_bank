@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Login from './components/Login';
 import Profils from './components/Profils';
+import SwaggerComponent from './components/Swagger';
 import Error from './components/Error';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profils" element={<Profils />} />
+        <Route path="/swagger" element={<SwaggerComponent />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

@@ -19,9 +19,11 @@ const Login = () => {
             <p>Sign In</p>
             <form>
               <label htmlFor="username" className='login__label'>Username</label>
-              <input type="text" id="username" name="username" />
+              <input type="text" id="username" name="username" autoComplete="username"
+                required />
               <label htmlFor="password" className='password__label'>Password</label>
-              <input type="password" id="password" name="password" />
+              <input type="password" id="password" name="password" autoComplete="current-password"
+                required />
               <div className='login__remember'>
                 <input type="checkbox" id="remember" name="remember" />
                 <label htmlFor="remember">Remember me</label>
