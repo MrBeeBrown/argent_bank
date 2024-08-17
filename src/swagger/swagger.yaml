@@ -33,16 +33,16 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/signup:
+  /user/signUp:
     post:
       tags:
         - User Module
-      summary: Signup
-      description: API for Signup
+      summary: Sign Up
+      description: API for Sign Up
       parameters:
         - in: body
           name: body
-          description: Signup Payload
+          description: Sign Up Payload
           required: true
           schema:
             $ref: '#/definitions/User'
@@ -50,7 +50,7 @@ paths:
         - application/json
       responses:
         '200':
-          description: Signup Successfully
+          description: Sign Up Successfully
           schema:
             $ref: '#/definitions/ApiResponse'
         '400':
@@ -74,7 +74,7 @@ paths:
         - application/json
       responses:
         '200':
-          description: User profile retrieved successully
+          description: User profile retrieved successfully
           schema:
             $ref: '#/definitions/ApiResponse'
         '400':
@@ -103,7 +103,7 @@ paths:
         - application/json
       responses:
         '200':
-          description: User profile retrieved successully
+          description: User profile retrieved successfully
           schema:
             $ref: '#/definitions/ApiResponse'
         '400':

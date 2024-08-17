@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
-import logo from '../assets/argentBankLogo.png'
-import user from '../assets/circle-user-solid.svg'
+import React from 'react'
+import Header from './Header'
+import Footer from './Footer'
 import chat from '../assets/icon-chat.png'
 import money from '../assets/icon-money.png'
 import security from '../assets/icon-security.png'
@@ -8,13 +8,7 @@ import security from '../assets/icon-security.png'
 const Home = () => {
   return (
     <div>
-      <header>
-        <Link to="/"><img src={logo} alt="Argent Bank logo" /></Link>
-        <div className="sign__in">
-          <img src={user} alt="Sign In" />
-          <Link to="/login"><p>Sign In</p></Link>
-        </div>
-      </header>
+      <Header />
       <main>
         <div className="cover">
           <div className='cover__content'>
@@ -48,9 +42,7 @@ const Home = () => {
           </div>
         </div>
       </main>
-      <footer>
-        <p>Copyright {new Date().getFullYear()} Argent Bank</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
