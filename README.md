@@ -7,10 +7,10 @@
 
 <div align="center">
 
-![Status](https://img.shields.io/badge/status-active-success.svg)
-![GitHub Language Count](https://img.shields.io/github/languages/count/MrBeeBrown/kasa-web?color=purple)
-![Repo Size](https://img.shields.io/github/repo-size/MrBeeBrown/kasa-web?color=orange)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![OpenClassRooms](https://img.shields.io/badge/Project-OpenClassRooms-purple)
+![Projet Number](https://img.shields.io/badge/Project-N%C2%B013-blue)
+![GitHub Language Count](https://img.shields.io/github/languages/count/MrBeeBrown/argent_bank?color=darkgreen)
+![Repo Size](https://img.shields.io/github/repo-size/MrBeeBrown/argent_bank?color=orange)
 
 </div>
 
