@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import logo from '../assets/argentBankLogo.png'
 import user from '../assets/circle-user-solid.svg'
 
+/**
+ * A functional React component that renders the application header.
+ *
+ * @return {JSX.Element} The JSX element representing the application header.
+ */
 const Header = () => {
   return (
     <header>

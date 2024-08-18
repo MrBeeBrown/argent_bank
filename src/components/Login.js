@@ -2,6 +2,11 @@ import { Link } from 'react-router-dom'
 import logo from '../assets/argentBankLogo.png'
 import user from '../assets/circle-user-solid.svg'
 
+/**
+ * A functional component that renders the login page of the Argent Bank application.
+ *
+ * @return {JSX.Element} The JSX element representing the login page.
+ */
 const Login = () => {
   return (
     <div>

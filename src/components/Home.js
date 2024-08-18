@@ -5,6 +5,11 @@ import chat from '../assets/icon-chat.png'
 import money from '../assets/icon-money.png'
 import security from '../assets/icon-security.png'
 
+/**
+ * A functional component representing the Home page of the Argent Bank application.
+ * 
+ * @return {JSX.Element} The JSX element representing the Home page with Header and Footer.
+ */
 const Home = () => {
   return (
     <div>
