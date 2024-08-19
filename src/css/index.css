@@ -200,6 +200,33 @@ main {
       }
     }
   }
+
+  .welcome_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: calc(100vh - 170px);
+    background-color: #12002B;
+  }
+
+  .welcome_message {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 1rem
+  }
+
+  .edit_name {
+    width: max-content;
+    height: max-content;
+    margin: .6rem auto;
+    padding: .5rem;
+    font-size: .5rem;
+    font-weight: 600;
+    background-color: #00BC77;
+    color: #ffffff;
+  }
 }
 
 footer {
