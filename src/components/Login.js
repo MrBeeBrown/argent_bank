@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import user from '../assets/circle-user-solid.svg';
 import Header from './Header';
 import Footer from './Footer';
+import accountServices from '../services/account.services';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -19,14 +22,14 @@ function Login() {
     });
 
     const data = await response.json();
-    if (data.token) {
-      localStorage.setItem('token', data.token);
-      window.location.href = '/profils';
+    if (data) {
+      accountServices.saveToken(data.body.token);
+      navigate('/profile');
     }
   };
 
   return (
-    <div>
+    <>
       <Header />
       <main>
         <div className='login'>
@@ -50,7 +53,7 @@ function Login() {
         </div>
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
 

@@ -9,7 +9,7 @@ import Footer from './Footer';
  */
 const Error = () => {
   return (
-    <div>
+    <>
       <Header />
       <main>
         <div className='error'>
@@ -19,7 +19,7 @@ const Error = () => {
         </div>
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
 

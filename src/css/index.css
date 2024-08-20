@@ -31,25 +31,47 @@ header {
   height: 40px;
   padding: 1.8rem 1.5rem;
 
-  img {
-    width: 200px;
-    cursor: pointer;
+  a {
+    img {
+      width: 200px;
+      cursor: pointer;
+    }
   }
 
   .sign__in {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    width: max-content;
     gap: 10px;
     font-weight: 600;
-
-    img {
-      width: 25px;
-    }
 
     a {
       color: #2C3E50;
       cursor: pointer;
       text-decoration: none;
+    }
+
+    .user, .logout {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      gap: .2rem;
+
+      img {
+        width: 25px;
+      }
+    }
+
+    .login {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      gap: .2rem;
+
+      img {
+        width: 25px;
+      }
     }
   }
 }
@@ -92,7 +114,7 @@ main {
     grid-template-columns: repeat(3, 1fr);
     gap: 4rem;
     margin: 0 auto;
-    padding-top: 3rem;
+    padding: 3rem .5rem 0 .5rem;
     margin-bottom: 3rem;
 
     div {
@@ -115,7 +137,6 @@ main {
           width: 100px;
         }
       }
-
 
       h2 {
         font-size: 1.3rem;
@@ -208,13 +229,41 @@ main {
     justify-content: flex-start;
     height: calc(100vh - 170px);
     background-color: #12002B;
+
+    a {
+      text-decoration: none;
+    }
   }
 
   .welcome_message {
     font-size: 1.5rem;
     font-weight: 600;
     color: #ffffff;
-    margin-top: 1rem
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .transactions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    background-color: #ffffff;
+    margin-bottom: 2rem;
+    padding: 1rem;
+  }
+
+  .balance {
+    font-weight: 600;
+    font-size: 2rem;
+  }
+
+  .view_transactions {
+    background-color: #00BC77;
+    color: #ffffff;
+    font-weight: 600;
+    padding: .5rem;
+    cursor: pointer;
   }
 
   .edit_name {
@@ -226,6 +275,98 @@ main {
     font-weight: 600;
     background-color: #00BC77;
     color: #ffffff;
+    cursor: pointer;
+  }
+
+  .profile_welcome_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: calc(100vh - 170px);
+    background-color: #E0E6ED;
+
+    .profile_welcome {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #000000;
+      margin: 1.5rem auto;
+      text-align: center;
+    }
+
+    .profile_input {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      input {
+        width: 200px;
+        height: 35px;
+        border: #C1CDD8 2px solid;
+        border-radius: 3px;
+      }
+    }
+
+    .profile_button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      color: #6458F5;
+      font-weight: 600;
+      font-size: .9rem;
+      padding: .5rem 1.5rem;
+      margin-bottom: 2rem;
+
+      a {
+        text-decoration: none;
+        color: #6458F5;
+      }
+
+      p {
+        width: 100px;
+        text-align: center;
+        background-color: #ffffff;
+        border-radius: 3px;
+        border: #6458F5 2px solid;
+        padding: .5rem 1rem;
+        cursor: pointer;
+      }
+    }
+
+    .profile_transactions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 80%;
+      background-color: #ffffff;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border: #C1CDD8 2px solid;
+
+      .profile_bank_account {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: .5rem;
+        font-size: .9rem;
+
+        .profile_balance {
+          font-weight: 600;
+          font-size: 1.5rem;
+        }
+      }
+
+      .profile_view_transactions {
+        background-color: #6458F5;
+        color: #ffffff;
+        border-radius: 3px;
+        font-weight: 600;
+        padding: .5rem;
+        cursor: pointer;
+      }
+    }
   }
 }
 
@@ -369,4 +510,116 @@ footer {
     border-top: #CCCCCC 1px solid;
   }
 
+}
+
+@media screen and (max-width: 600px) {
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    padding: 1rem .5rem;
+
+    img {
+      width: 120px;
+      cursor: pointer;
+    }
+
+    .sign__in {
+      width: max-content;
+
+      img {
+        width: 20px;
+      }
+
+      .user, .logout {
+        font-size: .7rem;
+      }
+    }
+  }
+
+  main {
+
+    .transactions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+      background-color: #ffffff;
+      margin-bottom: 2rem;
+      padding: 1rem;
+    }
+
+    .bank_account {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: .5rem;
+      font-size: .8rem;
+
+      .balance {
+        font-weight: 600;
+        font-size: 1.5rem;
+      }
+    }
+
+
+    .view_transactions {
+      background-color: #00BC77;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: .9rem;
+      padding: .5rem;
+      cursor: pointer;
+    }
+
+    .profile_welcome_content {
+      padding: 0 .5rem;
+
+      .profile_input {
+        input {
+          width: 140px;
+          height: 35px;
+          border: #C1CDD8 2px solid;
+          border-radius: 3px;
+        }
+      }
+
+      .profile_button {
+        p {
+          width: 80px;
+          text-align: center;
+          background-color: #ffffff;
+          border-radius: 3px;
+          border: #6458F5 2px solid;
+          padding: .5rem .5rem;
+          cursor: pointer;
+        }
+      }
+
+      .profile_transactions {
+        display: flex;
+        flex-direction: column;
+
+        .profile_bank_account {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: .5rem;
+          font-size: .8rem;
+
+          .profile_balance {
+            font-weight: 600;
+            font-size: 1.3rem;
+          }
+        }
+
+        .profile_view_transactions {
+          font-size: .9rem;
+        }
+      }
+    }
+  }
 }

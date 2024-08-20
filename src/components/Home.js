@@ -1,9 +1,9 @@
-import React from 'react'
-import Header from './Header'
-import Footer from './Footer'
-import chat from '../assets/icon-chat.png'
-import money from '../assets/icon-money.png'
-import security from '../assets/icon-security.png'
+import React from 'react';
+import Header from './Header';
+import Footer from './Footer';
+import chat from '../assets/icon-chat.png';
+import money from '../assets/icon-money.png';
+import security from '../assets/icon-security.png';
 
 /**
  * A functional component representing the Home page of the Argent Bank application.
@@ -12,7 +12,7 @@ import security from '../assets/icon-security.png'
  */
 const Home = () => {
   return (
-    <div>
+    <>
       <Header />
       <main>
         <div className="cover">
@@ -48,7 +48,7 @@ const Home = () => {
         </div>
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
 
