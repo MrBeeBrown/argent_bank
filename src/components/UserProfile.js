@@ -1,21 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import accountServices from "../services/account.services";
 
+
 /**
- * A functional component representing a user's profile page.
- * 
- * This component displays the user's name, bank account information, 
- * and provides options to view transactions and edit the user's name.
- * 
- * @return {JSX.Element} The JSX element representing the user's profile page.
+ * A functional component that displays a user's profile information, 
+ * including their name, bank account details, and available balance.
+ *
+ * @return {JSX.Element} The JSX element representing the user's profile.
  */
 const UserProfile = () => {
 
-  /* const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState(''); */
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+
+  useEffect(() => {
+    setFirstName(accountServices.getFirstName());
+    setLastName(accountServices.getLastName());
+  }, []);
 
   return (
     <div>
@@ -24,8 +28,8 @@ const UserProfile = () => {
         <div className='profile_welcome_content'>
           <p className='profile_welcome'>Welcome back</p>
           <div className="profile_input">
-            <input type="text" name="firstName" placeholder={accountServices.getFirstName()} />
-            <input type="text" name="lastName" placeholder={accountServices.getLastName()} />
+            <input type="text" name="firstName" placeholder={firstName} />
+            <input type="text" name="lastName" placeholder={lastName} />
           </div>
           <div className="profile_button">
             <p>Save</p>

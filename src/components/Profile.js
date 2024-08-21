@@ -33,7 +33,8 @@ const Profile = () => {
     });
 
     const data = await response.json();
-    if (data) {
+
+    if (data.status === 200) {
       setId(data.body.id);
       setEmail(data.body.email);
       setFirstName(data.body.firstName);
@@ -55,7 +56,7 @@ const Profile = () => {
       <Header {...{ firstName }} />
       <main>
         <div className='welcome_content'>
-          <p className='welcome_message'>Welcome back<br />{accountServices.getFirstName()} {accountServices.getLastName()} !</p>
+          <p className='welcome_message'>Welcome back<br />{firstName} {lastName} !</p>
           <Link to={"/user_profile"}><p className='edit_name'>Edit Name</p></Link>
           <div className='transactions'>
             <div className='bank_account'>

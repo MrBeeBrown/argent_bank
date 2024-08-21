@@ -8,9 +8,11 @@ import accountServices from '../services/account.services';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (event) => {
+
     event.preventDefault();
 
     const response = await fetch('http://localhost:3001/api/v1/user/login', {
@@ -22,9 +24,12 @@ function Login() {
     });
 
     const data = await response.json();
-    if (data) {
+    if (data.status === 200) {
       accountServices.saveToken(data.body.token);
+      setError('');
       navigate('/profile');
+    } else {
+      setError(data.message);
     }
   };
 
@@ -48,6 +53,9 @@ function Login() {
                 <label htmlFor="remember">Remember me</label>
               </div>
               <input className='login__button' type="submit" value="Sign In" />
+              <div className='login__error'>
+                <p>{error}</p>
+              </div>
             </form>
           </div>
         </div>

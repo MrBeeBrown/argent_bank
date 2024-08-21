@@ -57,9 +57,10 @@ header {
       align-items: center;
       width: max-content;
       gap: .2rem;
+      font-size: .9rem;
 
       img {
-        width: 25px;
+        width: 16px;
       }
     }
 
@@ -68,9 +69,10 @@ header {
       align-items: center;
       width: max-content;
       gap: .2rem;
+      font-size: .9rem;
 
       img {
-        width: 25px;
+        width: 16px;
       }
     }
   }
@@ -220,6 +222,18 @@ main {
         }
       }
     }
+
+    .login__error {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: red;
+
+      p {
+        font-size: .8rem;
+        font-weight: 600;
+      }
+    }
   }
 
   .welcome_content {
@@ -348,7 +362,7 @@ main {
       .profile_bank_account {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         margin-bottom: .5rem;
         font-size: .9rem;
 
@@ -555,7 +569,7 @@ footer {
     .bank_account {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       margin-bottom: .5rem;
       font-size: .8rem;
 

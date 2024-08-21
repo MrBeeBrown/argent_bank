@@ -4,7 +4,7 @@ import logo from '../assets/argentBankLogo.png';
 import user from '../assets/circle-user-solid.svg';
 import logout from '../assets/right-from-bracket-solid.svg';
 import accountServices from "../services/account.services";
-
+import PropTypes from "prop-types";
 
 /**
  * Renders the header component of the application, displaying the logo and user authentication status.
@@ -13,18 +13,18 @@ import accountServices from "../services/account.services";
  * @return {JSX.Element} The rendered header component.
  */
 const Header = ({ firstName }) => {
-  const userToken = accountServices.getToken();
-  const userName = accountServices.getFirstName();
+
+  const token = accountServices.getToken();
 
   return (
     <header>
       <Link to="/"><img src={logo} className="logo" alt="Argent Bank logo" /></Link>
       <div className="sign__in">
-        {userToken &&
+        {token &&
           <>
             <div className="user">
               <img src={user} alt="User logo" />
-              <Link to="/profile"><p>{userName ? userName : firstName}</p></Link>
+              <Link to="/profile"><p> {accountServices.getFirstName() ? accountServices.getFirstName() : firstName} </p></Link>
             </div>
             <div className="logout">
               <img src={logout} alt="Sign Out"></img>
@@ -32,7 +32,7 @@ const Header = ({ firstName }) => {
             </div>
           </>
         }
-        {!userToken &&
+        {!token &&
           <>
             <div className="login">
               <img src={user} alt="Sign In" />
@@ -44,5 +44,9 @@ const Header = ({ firstName }) => {
     </header>
   );
 };
+
+Header.prototypes = {
+  firstName: PropTypes.string
+}
 
 export default Header;
