@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useStore, useDispatch } from 'react-redux';
+import { savedId, savedFirstName, savedLastName, savedEmail } from '../features/userSlice';
 import Header from './Header';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
-import accountServices from '../services/account.services';
 
 /**
  * A React component that renders the user profile page.
@@ -10,10 +11,8 @@ import accountServices from '../services/account.services';
  * @return {JSX.Element} The JSX element representing the user profile page.
  */
 const Profile = () => {
-  const [id, setId] = useState('');
-  const [email, setEmail] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const store = useStore();
+  const dispatch = useDispatch();
 
   /**
    * Retrieves and updates user data from the server.
@@ -22,7 +21,7 @@ const Profile = () => {
    */
   const userData = async () => {
 
-    const userToken = accountServices.getToken();
+    const userToken = store.getState().user.token;
 
     const response = await fetch('http://localhost:3001/api/v1/user/profile', {
       method: 'POST',
@@ -35,28 +34,24 @@ const Profile = () => {
     const data = await response.json();
 
     if (data.status === 200) {
-      setId(data.body.id);
-      setEmail(data.body.email);
-      setFirstName(data.body.firstName);
-      setLastName(data.body.lastName);
-      accountServices.saveId(id);
-      accountServices.saveEmail(email);
-      accountServices.saveFirstName(firstName);
-      accountServices.saveLastName(lastName);
+      dispatch(savedId(data.body.id));
+      dispatch(savedFirstName(data.body.firstName));
+      dispatch(savedLastName(data.body.lastName));
+      dispatch(savedEmail(data.body.email));
     }
   }
 
-  const userId = accountServices.getId();
+  const userId = store.getState().user.id;
   if (!userId) {
     userData();
   }
 
   return (
     <>
-      <Header {...{ firstName }} />
+      <Header />
       <main>
         <div className='welcome_content'>
-          <p className='welcome_message'>Welcome back<br />{firstName} {lastName} !</p>
+          <p className='welcome_message'>Welcome back<br />{store.getState().user.firstName} {store.getState().user.lastName} !</p>
           <Link to={"/user_profile"}><p className='edit_name'>Edit Name</p></Link>
           <div className='transactions'>
             <div className='bank_account'>

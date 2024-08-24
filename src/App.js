@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
+import { Provider } from 'react-redux';
+import Store from './store/Store';
 import Home from './components/Home';
 import Login from './components/Login';
 import Profile from './components/Profile';
@@ -15,17 +17,19 @@ import Error from './components/Error';
  */
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route element={<PrivateRoute />}>
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/user_profile" element={<UserProfile />} />
-        </Route>
-        <Route path="*" element={<Error />} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={Store}>
+      <BrowserRouter >
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/user_profile" element={<UserProfile />} />
+          </Route>
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

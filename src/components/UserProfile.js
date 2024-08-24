@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useStore } from 'react-redux';
 import Header from "./Header";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
-import accountServices from "../services/account.services";
 
 
 /**
@@ -13,13 +13,7 @@ import accountServices from "../services/account.services";
  */
 const UserProfile = () => {
 
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-
-  useEffect(() => {
-    setFirstName(accountServices.getFirstName());
-    setLastName(accountServices.getLastName());
-  }, []);
+  const store = useStore();
 
   return (
     <div>
@@ -28,8 +22,8 @@ const UserProfile = () => {
         <div className='profile_welcome_content'>
           <p className='profile_welcome'>Welcome back</p>
           <div className="profile_input">
-            <input type="text" name="firstName" placeholder={firstName} />
-            <input type="text" name="lastName" placeholder={lastName} />
+            <input type="text" name="firstName" placeholder={store.getState().user.firstName} />
+            <input type="text" name="lastName" placeholder={store.getState().user.lastName} />
           </div>
           <div className="profile_button">
             <p>Save</p>

@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
 import user from '../assets/circle-user-solid.svg';
 import Header from './Header';
 import Footer from './Footer';
-import accountServices from '../services/account.services';
+import { savedToken } from '../features/userSlice';
 
 function Login() {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
 
   const handleLogin = async (event) => {
 
@@ -25,7 +28,7 @@ function Login() {
 
     const data = await response.json();
     if (data.status === 200) {
-      accountServices.saveToken(data.body.token);
+      dispatch(savedToken(data.body.token));
       setError('');
       navigate('/profile');
     } else {

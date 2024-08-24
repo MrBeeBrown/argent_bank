@@ -1,6 +1,6 @@
 import React from "react";
+import { useStore } from "react-redux";
 import { Outlet, Navigate } from "react-router-dom";
-import accountServices from "../services/account.services";
 
 /**
  * Renders a private route component that checks if the user is authenticated by checking the 
@@ -12,7 +12,8 @@ import accountServices from "../services/account.services";
  */
 
 const PrivateRoute = () => {
-  return accountServices.getToken() ? <Outlet /> : <Navigate to="/login" />;
+  const store = useStore();
+  return store.getState().user.token ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default PrivateRoute;

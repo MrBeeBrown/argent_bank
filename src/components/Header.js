@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useStore } from 'react-redux';
+import { deletedUser } from "../features/userSlice";
 import logo from '../assets/argentBankLogo.png';
 import user from '../assets/circle-user-solid.svg';
 import logout from '../assets/right-from-bracket-solid.svg';
-import accountServices from "../services/account.services";
 import PropTypes from "prop-types";
 
 /**
@@ -12,9 +13,12 @@ import PropTypes from "prop-types";
  * @param {string} firstName - The first name of the user, used as a fallback if the user's name is not available.
  * @return {JSX.Element} The rendered header component.
  */
-const Header = ({ firstName }) => {
+const Header = () => {
 
-  const token = accountServices.getToken();
+  const store = useStore();
+  const dispatch = useDispatch();
+
+  const token = store.getState().user.token;
 
   return (
     <header>
@@ -24,11 +28,11 @@ const Header = ({ firstName }) => {
           <>
             <div className="user">
               <img src={user} alt="User logo" />
-              <Link to="/profile"><p> {accountServices.getFirstName() ? accountServices.getFirstName() : firstName} </p></Link>
+              <Link to="/profile"><p> {store.getState().user.firstName} </p></Link>
             </div>
             <div className="logout">
               <img src={logout} alt="Sign Out"></img>
-              <Link to="/" reloadDocument><p onClick={() => accountServices.clearStorage()}>Sign Out</p></Link>
+              <Link to="/" reloadDocument><p onClick={() => dispatch(deletedUser())}>Sign Out</p></Link>
             </div>
           </>
         }
