@@ -5,14 +5,13 @@ import { deletedUser } from "../features/userSlice";
 import logo from '../assets/argentBankLogo.png';
 import user from '../assets/circle-user-solid.svg';
 import logout from '../assets/right-from-bracket-solid.svg';
-import PropTypes from "prop-types";
 
 /**
  * Renders the header component of the application, displaying the logo and user authentication status.
  *
- * @param {string} firstName - The first name of the user, used as a fallback if the user's name is not available.
  * @return {JSX.Element} The rendered header component.
  */
+
 const Header = () => {
 
   const dispatch = useDispatch();
@@ -48,9 +47,5 @@ const Header = () => {
     </header>
   );
 };
-
-Header.prototypes = {
-  firstName: PropTypes.string
-}
 
 export default Header;
