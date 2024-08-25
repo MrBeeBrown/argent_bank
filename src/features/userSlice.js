@@ -15,27 +15,22 @@ const userSlice = createSlice({
     savedToken: (state, action) => {
       const token = action.payload;
       state.token = (token);
-      return;
     },
     savedId: (state, action) => {
       const id = action.payload;
       state.id = (id);
-      return;
     },
     savedEmail: (state, action) => {
       const email = action.payload;
       state.email = (email);
-      return;
     },
     savedFirstName: (state, action) => {
       const firstName = action.payload;
       state.firstName = (firstName);
-      return;
     },
     savedLastName: (state, action) => {
       const lastName = action.payload;
       state.lastName = (lastName);
-      return;
     },
     deletedUser: (state) => {
       state.token = "";
@@ -43,7 +38,6 @@ const userSlice = createSlice({
       state.email = "";
       state.firstName = "";
       state.lastName = "";
-      return;
     },
   },
 });

@@ -1,5 +1,5 @@
-import React from 'react';
-import { useStore, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { savedId, savedFirstName, savedLastName, savedEmail } from '../features/userSlice';
 import Header from './Header';
 import Footer from './Footer';
@@ -11,8 +11,10 @@ import { Link } from 'react-router-dom';
  * @return {JSX.Element} The JSX element representing the user profile page.
  */
 const Profile = () => {
-  const store = useStore();
+
   const dispatch = useDispatch();
+  const [error, setError] = useState('');
+  const userToken = useSelector(state => state.user.token);
 
   /**
    * Retrieves and updates user data from the server.
@@ -21,7 +23,6 @@ const Profile = () => {
    */
   const userData = async () => {
 
-    const userToken = store.getState().user.token;
 
     const response = await fetch('http://localhost:3001/api/v1/user/profile', {
       method: 'POST',
@@ -38,10 +39,12 @@ const Profile = () => {
       dispatch(savedFirstName(data.body.firstName));
       dispatch(savedLastName(data.body.lastName));
       dispatch(savedEmail(data.body.email));
+    } else {
+      setError(data.message);
     }
   }
 
-  const userId = store.getState().user.id;
+  const userId = useSelector(state => state.user.id);
   if (!userId) {
     userData();
   }
@@ -51,8 +54,11 @@ const Profile = () => {
       <Header />
       <main>
         <div className='welcome_content'>
-          <p className='welcome_message'>Welcome back<br />{store.getState().user.firstName} {store.getState().user.lastName} !</p>
+          <p className='welcome_message'>Welcome back<br />{useSelector(state => state.user.firstName)} {useSelector(state => state.user.lastName)} !</p>
           <Link to={"/user_profile"}><p className='edit_name'>Edit Name</p></Link>
+          {error &&
+            <p className='error_message'>{error}</p>
+          }
           <div className='transactions'>
             <div className='bank_account'>
               <p>Argent Bank Checking (x8349)</p>

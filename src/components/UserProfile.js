@@ -1,5 +1,5 @@
 import React from "react";
-import { useStore } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Header from "./Header";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
@@ -13,8 +13,6 @@ import { Link } from "react-router-dom";
  */
 const UserProfile = () => {
 
-  const store = useStore();
-
   return (
     <div>
       <Header />
@@ -22,8 +20,8 @@ const UserProfile = () => {
         <div className='profile_welcome_content'>
           <p className='profile_welcome'>Welcome back</p>
           <div className="profile_input">
-            <input type="text" name="firstName" placeholder={store.getState().user.firstName} />
-            <input type="text" name="lastName" placeholder={store.getState().user.lastName} />
+            <input type="text" name="firstName" placeholder={useSelector(state => state.user.firstName)} />
+            <input type="text" name="lastName" placeholder={useSelector(state => state.user.lastName)} />
           </div>
           <div className="profile_button">
             <p>Save</p>

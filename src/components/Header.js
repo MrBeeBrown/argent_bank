@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useStore } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deletedUser } from "../features/userSlice";
 import logo from '../assets/argentBankLogo.png';
 import user from '../assets/circle-user-solid.svg';
@@ -15,10 +15,10 @@ import PropTypes from "prop-types";
  */
 const Header = () => {
 
-  const store = useStore();
   const dispatch = useDispatch();
 
-  const token = store.getState().user.token;
+  const token = useSelector(state => state.user.token);
+  const firstName = useSelector(state => state.user.firstName);
 
   return (
     <header>
@@ -28,11 +28,11 @@ const Header = () => {
           <>
             <div className="user">
               <img src={user} alt="User logo" />
-              <Link to="/profile"><p> {store.getState().user.firstName} </p></Link>
+              <Link to="/profile" ><p> {firstName} </p></Link>
             </div>
             <div className="logout">
               <img src={logout} alt="Sign Out"></img>
-              <Link to="/" reloadDocument><p onClick={() => dispatch(deletedUser())}>Sign Out</p></Link>
+              <Link to="/" ><p onClick={() => dispatch(deletedUser())}>Sign Out</p></Link>
             </div>
           </>
         }
