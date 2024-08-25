@@ -7,12 +7,13 @@ import Footer from './Footer';
 import { savedToken } from '../features/userSlice';
 
 
-/**
- * Renders a login form and handles the login functionality.
- *
- * @return {JSX.Element} The login form component.
- */
 
+
+/**
+ * Handles the rendering and functionality of the login page, including form submission and error handling.
+ *
+ * @return {JSX.Element} The JSX element representing the login page.
+ */
 function Login() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
@@ -20,13 +21,15 @@ function Login() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+
   /**
    * Handles the login functionality by sending a POST request to the server with the provided email and password.
+   * If the login is successful, it dispatches the saved token and navigates to the profile page.
+   * If the login fails, it sets the error message.
    *
-   * @param {object} event - The event object triggered by the form submission.
-   * @return {Promise<void>} A promise that resolves when the login request is completed.
+   * @param {Event} event - The event object triggered by the form submission.
+   * @return {Promise<void>} A promise that resolves when the login functionality is complete.
    */
-
   const handleLogin = async (event) => {
 
     event.preventDefault();
