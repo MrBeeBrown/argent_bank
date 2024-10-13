@@ -165,7 +165,7 @@ main {
     flex-direction: column;
     align-items: center;
     width: 300px;
-    height: 370px;
+    height: 390px;
     background-color: #ffffff;
     padding: 2rem;
     margin-top: 3rem;
@@ -180,7 +180,7 @@ main {
       font-size: 1.3rem
     }
 
-    form {
+    .signIn__form {
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -201,7 +201,7 @@ main {
         cursor: pointer;
       }
 
-      .login__label {
+      .email__label {
         font-weight: 600;
       }
 
@@ -221,6 +221,18 @@ main {
           height: 15px;
         }
       }
+
+      .signup {
+        text-align: center;
+
+        p {
+          font-size: .8rem;
+
+          a {
+            text-decoration: none;
+          }
+        }
+      }
     }
 
     .login__error {
@@ -232,6 +244,100 @@ main {
       p {
         font-size: .8rem;
         font-weight: 600;
+      }
+    }
+  }
+
+  .signUp__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 530px;
+    background-color: #ffffff;
+    padding: 2rem;
+    margin-top: 3rem;
+    gap: 1rem;
+
+    img {
+      width: 20px;
+    }
+
+    p {
+      font-weight: 600;
+      font-size: 1.3rem
+    }
+
+    .signUp {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      input {
+        margin-bottom: 1rem;
+        width: 230px;
+        height: 35px;
+      }
+
+      .login__button {
+        background-color: #00BC77;
+        color: #ffffff;
+        font-weight: 600;
+        border: none;
+        padding: .5rem;
+        margin-top: 1rem;
+        cursor: pointer;
+      }
+
+      .firstName__label {
+        font-weight: 600;
+      }
+
+      .lastName__label {
+        font-weight: 600;
+      }
+
+      .email__label {
+        font-weight: 600;
+      }
+
+      .password__label {
+        font-weight: 600;
+      }
+
+      .login__remember {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: .9rem;
+
+        input {
+          margin: 0;
+          width: 15px;
+          height: 15px;
+        }
+      }
+
+      .signup {
+        text-align: center;
+
+        p {
+          font-size: .8rem;
+
+          a {
+            text-decoration: none;
+          }
+        }
+      }
+
+      .signup__message {
+        text-align: center;
+        margin-top: .3rem;
+
+        p {
+          font-size: .9rem;
+          color: #00BC77;
+        }
       }
     }
   }
@@ -347,6 +453,18 @@ main {
         padding: .5rem 1rem;
         cursor: pointer;
       }
+    }
+
+    .update__message {
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: #00BC77;
+    }
+
+    .update__error {
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: red;
     }
 
     .profile_transactions {
