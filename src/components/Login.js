@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { Link } from "react-router-dom";
 import user from '../assets/circle-user-solid.svg';
 import Header from './Header';
 import Footer from './Footer';
@@ -61,9 +60,9 @@ function Login() {
           <div className='login__form'>
             <img src={user} alt="Sign In" />
             <p>Sign In</p>
-            <form className='signIn__form' onSubmit={handleLogin}>
-              <label htmlFor="email" className='email__label'>Email</label>
-              <input type="email" id="email" name="email" autoComplete="email"
+            <form onSubmit={handleLogin}>
+              <label htmlFor="username" className='login__label'>Username</label>
+              <input type="email" id="username" name="username" autoComplete="username"
                 required value={email} onChange={(event) => setEmail(event.target.value)} />
               <label htmlFor="password" className='password__label'>Password</label>
               <input type="password" id="password" name="password" autoComplete="current-password"
@@ -73,9 +72,6 @@ function Login() {
                 <label htmlFor="remember">Remember me</label>
               </div>
               <input className='login__button' type="submit" value="Sign In" />
-              <div className='signup'>
-                <p>Don't have an account <Link to={"/signup"}>Sign Up</Link></p>
-              </div>
               <div className='login__error'>
                 <p>{error}</p>
               </div>

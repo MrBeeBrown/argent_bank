@@ -7,7 +7,6 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Profile from './components/Profile';
 import UserProfile from './components/UserProfile';
-import Signup from './components/SignUp';
 import Error from './components/Error';
 
 /**
@@ -23,7 +22,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/user_profile" element={<UserProfile />} />
