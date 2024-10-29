@@ -1,5 +1,6 @@
-import React from "react";
-import { useSelector } from 'react-redux';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { updateUserAPI } from "../features/userSlice";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
@@ -13,6 +14,16 @@ import { Link } from "react-router-dom";
  */
 const UserProfile = () => {
 
+  const dispatch = useDispatch();
+  const { id, firstName, lastName, status, error } = useSelector((state) => state.user);
+
+  const [newFirstName, setNewFirstName] = useState(firstName);
+  const [newLastName, setNewLastName] = useState(lastName);
+
+  const updateUser = () => {
+    dispatch(updateUserAPI({ id, firstName: newFirstName, lastName: newLastName }));
+  };
+
   return (
     <div>
       <Header />
@@ -20,12 +31,14 @@ const UserProfile = () => {
         <div className='profile_welcome_content'>
           <p className='profile_welcome'>Welcome back</p>
           <div className="profile_input">
-            <input type="text" name="firstName" placeholder={useSelector(state => state.user.firstName)} />
-            <input type="text" name="lastName" placeholder={useSelector(state => state.user.lastName)} />
+            <input type="text" name="firstName" placeholder={firstName} onChange={(e) => setNewFirstName(e.target.value)} />
+            <input type="text" name="lastName" placeholder={lastName} onChange={(e) => setNewLastName(e.target.value)} />
           </div>
           <div className="profile_button">
-            <p>Save</p>
+            <p onClick={updateUser}>Save</p>
             <Link to={"/profile"}><p>Cancel</p></Link>
+            {status === "loading" && <p>Updating...</p>}
+            {status === "failed" && <p>Error: {error}</p>}
           </div>
           <div className='profile_transactions'>
             <div className='profile_bank_account'>

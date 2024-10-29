@@ -1,4 +1,31 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+export const updateUserAPI = createAsyncThunk(
+  "user/updateUserAPI",
+  async ({ firstName, lastName }, { getState, rejectWithValue }) => {
+    const userToken = getState().user.token;
+
+    try {
+      const response = await fetch(`http://localhost:3001/api/v1/user/profile`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+        body: JSON.stringify({ firstName, lastName }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update user");
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
 const initialState = {
   id: "",
@@ -6,6 +33,8 @@ const initialState = {
   email: "",
   firstName: "",
   lastName: "",
+  status: 'idle',
+  error: null,
 };
 
 const userSlice = createSlice({
@@ -39,6 +68,22 @@ const userSlice = createSlice({
       state.firstName = "";
       state.lastName = "";
     },
+  },
+
+  extraReducers: (builder) => {
+    builder
+      .addCase(updateUserAPI.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(updateUserAPI.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.firstName = action.meta.arg.firstName;
+        state.lastName = action.meta.arg.lastName;
+      })
+      .addCase(updateUserAPI.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      });
   },
 });
 
