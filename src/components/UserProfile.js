@@ -15,13 +15,13 @@ import { Link } from "react-router-dom";
 const UserProfile = () => {
 
   const dispatch = useDispatch();
-  const { id, firstName, lastName, status, error } = useSelector((state) => state.user);
+  const { firstName, lastName, status, error } = useSelector((state) => state.user);
 
   const [newFirstName, setNewFirstName] = useState(firstName);
   const [newLastName, setNewLastName] = useState(lastName);
 
   const updateUser = () => {
-    dispatch(updateUserAPI({ id, firstName: newFirstName, lastName: newLastName }));
+    dispatch(updateUserAPI({ firstName: newFirstName, lastName: newLastName }));
   };
 
   return (
